@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package proto_svg;
+
+message Rgb
+{
+	uint32 red = 1;
+    uint32 green = 2;
+    uint32 blue = 3;
+}
+
+import "google/protobuf/empty.proto";
+
+message Monostate
+{
+	google.protobuf.Empty monostate = 1;
+}
+
+message Rgba
+{
+	uint32 red = 1;
+    uint32 green = 2;
+    uint32 blue = 3;
+	double opacity = 4;
+}
+
+message Color
+{
+	oneof color
+	{
+		string str_color = 1;
+		Monostate mono_color = 2;
+		Rgb rgb_color = 3;
+		Rgba rgba_color = 4;
+	}
+}

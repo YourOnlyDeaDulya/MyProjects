@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package data_info;
+
+message Stop
+{
+	bytes stop_name = 1;
+	double lat = 2;
+	double lng = 3;
+	uint32 id = 4;
+}
+
+message StopsDistancePair
+{
+	uint32 first_id = 1;
+	uint32 second_id = 2;
+	uint32 distance = 3;
+}
+
+message StopList
+{
+	repeated Stop stops = 1;
+}
+
+message Bus
+{
+	bytes bus_name_ = 1;
+	repeated uint32 stop_ids = 2;
+	uint32 id = 3;
+	uint32 bus_type = 4;
+}
+
+message BusList
+{
+	repeated Bus buses = 1;
+}
+
+message Catalogue
+{
+	StopList stops = 1;
+	BusList buses = 2;
+	repeated StopsDistancePair stop_to_stop_distance = 3;
+}
+
+import "map_renderer.proto";
+import "transport_router.proto";
+
+message SerializePackage
+{
+	Catalogue cat = 1;
+	render_sett.RenderSettings rs = 2;
+	proto_router.TransportRouter tr = 3;
+}

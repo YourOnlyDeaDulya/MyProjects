@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package proto_router;
+
+import "google/protobuf/empty.proto";
+
+message Nullopt
+{
+	google.protobuf.Empty nullopt = 1;
+}
+
+message OptionalEdgeId
+{
+	oneof value
+	{
+		uint64 prev_edge = 1;
+		Nullopt nullopt  = 2;
+	}
+}
+
+import "graph.proto";
+
+message RouteIntDataFile
+{
+	proto_graph.Weight weight = 1;
+	OptionalEdgeId prev_edge = 2;
+}
+
+message OptionalRIDF
+{
+	oneof value
+	{
+		RouteIntDataFile rid_file = 1;
+		Nullopt nullopt = 2;
+	}
+}
+
+message RouteIntDataLine
+{
+	repeated OptionalRIDF opt_rid_file = 1;
+}
+
+message RouteIntDataBase
+{
+	repeated RouteIntDataLine rid_lines = 1;
+}
+
+message TransportRouter
+{
+	proto_graph.Graph graph = 1;
+	RouteIntDataBase routes_int_data = 2;
+	double bus_velocity = 3;
+	double bus_wait_time = 4;
+}

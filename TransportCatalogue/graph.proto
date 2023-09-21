@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package proto_graph;
+
+message Weight
+{
+	double time = 1;
+	uint32 edge_type = 2;
+	int64 bus_id = 3;
+	uint32 span_count = 4;
+}
+
+message Edge
+{
+	uint64 from = 1;
+	uint64 to = 2;
+	Weight weight = 3;
+}
+
+message IncidenceList
+{
+	repeated uint64 edge_id = 1;
+}
+
+message Graph
+{
+	repeated Edge edges = 1;
+	repeated IncidenceList incidence_lists = 2;
+}

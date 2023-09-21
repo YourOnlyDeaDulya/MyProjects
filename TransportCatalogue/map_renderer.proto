@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package render_sett;
+
+message PolylineSett
+{
+	double line_width = 1;
+}
+
+message CircleSett
+{
+	double stop_radius = 1;
+}
+
+message SphereProjSett
+{
+	double width = 1;
+	double height = 2;
+	double padding = 3;
+}
+
+message Point
+{
+	double x = 1;
+	double y = 2;
+}
+
+import "svg.proto";
+
+message TextSett
+{
+	uint32 bus_label_font_size = 1;
+    Point bus_label_offset = 2;
+	uint32 stop_label_font_size = 3;
+    Point stop_label_offset = 4;
+    proto_svg.Color underlayer_color = 5;
+    double underlayer_width = 6;
+}
+
+message ColorPaletteSett
+{
+	repeated proto_svg.Color color_palette = 1;
+}
+
+message RenderSettings
+{
+	PolylineSett polyline = 1;
+	CircleSett circle = 2;
+	SphereProjSett sph_proj = 3;
+	TextSett text = 4;
+	ColorPaletteSett color_palette = 5;
+}
