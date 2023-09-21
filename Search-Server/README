@@ -1,0 +1,1 @@
+simple version of search-server. Allows to store sentences and search for top-5 best matches of your personal query. Works using parallel-algorithms, mutex and ConcurrentMap, that allows to write new sentences parallel too.
