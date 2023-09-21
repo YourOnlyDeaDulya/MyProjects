@@ -1,0 +1,2 @@
+Transport Catalogue. Allows you to write stops and routes, including stops coordinates and distances inbetween. Can print out route map, show information about routes and find shortest path from one stop to another using Dijkstra`s algorithm.
+If nessesary, can be written binary to a file with help of Protobuf.
