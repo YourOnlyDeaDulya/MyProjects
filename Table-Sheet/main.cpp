@@ -289,6 +289,7 @@ void TestPrint() {
     std::ostringstream values;
     sheet->PrintValues(values);
     ASSERT_EQUAL(values.str(), "\t\nmeow\t35\n");
+    std::cout << values.str();
 }
 
 void TestCellReferences() {
